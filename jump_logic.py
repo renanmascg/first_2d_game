@@ -45,20 +45,22 @@ class Player:
         self.esquerda = False
         self.altura_pulo_atual = ALTURA_MAXIMA_PULO
         self.transicao_de_imagem = 0
+        self.parado = True
 
     def movimentar_personagem(self, key_pressed):
         if key_pressed[pygame.K_RIGHT]:
             self.pos_x += player.velocidade
             self.direita = True
             self.esquerda = False
+            self.parado = False
 
         elif key_pressed[pygame.K_LEFT]:
             self.pos_x -= player.velocidade
             self.direita = False
             self.esquerda = True
+            self.parado = False
         else:
-            self.direita = False
-            self.esquerda = False
+            self.parado = True
             self.transicao_de_imagem = 0
 
         if key_pressed[pygame.K_SPACE]:
@@ -82,17 +84,22 @@ class Player:
         if self.transicao_de_imagem + 1 == 27:
             self.transicao_de_imagem = 0
 
-        if self.direita:
-            tela.blit(imgs_andar_direita[self.transicao_de_imagem // 3], (self.pos_x, self.pos_y))
-            self.transicao_de_imagem += 1
+        if not self.parado:
 
-        elif self.esquerda:
-            tela.blit(imgs_andar_esquerda[self.transicao_de_imagem // 3], (self.pos_x, self.pos_y))
-            self.transicao_de_imagem += 1
+            if self.direita:
+                tela.blit(imgs_andar_direita[self.transicao_de_imagem // 3], (self.pos_x, self.pos_y))
+                self.transicao_de_imagem += 1
+
+            elif self.esquerda:
+                tela.blit(imgs_andar_esquerda[self.transicao_de_imagem // 3], (self.pos_x, self.pos_y))
+                self.transicao_de_imagem += 1
 
         else:
-            tela.blit(img_personagem, (self.pos_x, self.pos_y))
-            self.transicao_de_imagem = 0
+
+            if self.direita:
+                tela.blit(imgs_andar_direita[0], (self.pos_x, self.pos_y))
+            else:
+                tela.blit(imgs_andar_esquerda[0], (self.pos_x, self.pos_y))
 
 
 def redesenhar_tela():
