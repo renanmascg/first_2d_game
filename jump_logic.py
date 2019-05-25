@@ -17,6 +17,10 @@ ALTURA = 480
 # define a altura maxima do pulo
 ALTURA_MAXIMA_PULO = 8
 
+# MÁXIMO DE PROJETEIS NA TELA
+MAX_PROJETEIS = 5
+
+# IMAGENS PRESENTES NA TELA
 imgs_andar_direita = [pygame.image.load('GameImages/R{}.png'.format(i)) for i in range(1, 10)]
 imgs_andar_esquerda = [pygame.image.load('GameImages/L{}.png'.format(i)) for i in range(1, 10)]
 img_personagem = pygame.image.load('GameImages/standing.png')
@@ -46,8 +50,13 @@ class Player:
         self.altura_pulo_atual = ALTURA_MAXIMA_PULO
         self.transicao_de_imagem = 0
         self.parado = True
+        self.projeteis = []
 
     def movimentar_personagem(self, key_pressed):
+
+        if key_pressed[pygame.K_SPACE] and len(self.projeteis) < MAX_PROJETEIS:
+            self.adicionar_projetil()
+
         if key_pressed[pygame.K_RIGHT]:
             self.pos_x += player.velocidade
             self.direita = True
@@ -63,7 +72,7 @@ class Player:
             self.parado = True
             self.transicao_de_imagem = 0
 
-        if key_pressed[pygame.K_SPACE]:
+        if key_pressed[pygame.K_UP]:
             self.is_pulando = True
 
         if self.is_pulando:
@@ -79,6 +88,17 @@ class Player:
             else:
                 self.altura_pulo_atual = ALTURA_MAXIMA_PULO
                 self.is_pulando = False
+
+    def adicionar_projetil(self):
+        proj_pos_x = self.pos_x + self.largura // 2
+        proj_pos_y = self.pos_y + self.altura // 2
+
+        if self.direita:
+            direcao = 1
+        else:
+            direcao = -1
+
+        self.projeteis.append(Projectile(proj_pos_x, proj_pos_y, 5, AZUL, direcao))
 
     def desenhar_personagem(self, tela):
         if self.transicao_de_imagem + 1 == 27:
@@ -101,12 +121,35 @@ class Player:
             else:
                 tela.blit(imgs_andar_esquerda[0], (self.pos_x, self.pos_y))
 
+    def atualizar_projetil(self):
+        for proj in self.projeteis:
+            if proj.pos_x < 0 or proj.pos_x > LARGURA:
+                self.projeteis.pop(self.projeteis.index(proj))
+            else:
+                proj.pos_x += proj.velocidade
+
+
+class Projectile:
+    def __init__(self, pos_x, pos_y, raio, cor, direcao):
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.raio = raio
+        self.cor = cor
+        self.direcao = direcao
+        self.velocidade = 8 * direcao
+
+    def desenhar_projetil(self, tela):
+        pygame.draw.circle(tela, self.cor, (self.pos_x, self.pos_y), self.raio)
+
 
 def redesenhar_tela():
     controle_FPS.tick(27)
     tela.blit(background, (0, 0))
 
     player.desenhar_personagem(tela)
+
+    for projetil in player.projeteis:
+        projetil.desenhar_projetil(tela)
 
     pygame.display.update()
 
@@ -121,6 +164,8 @@ while not sair_jogo:
     key_pressed = pygame.key.get_pressed()
 
     player.movimentar_personagem(key_pressed)
+
+    player.atualizar_projetil()
 
     redesenhar_tela()
 
