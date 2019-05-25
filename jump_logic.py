@@ -82,7 +82,7 @@ class Player:
                 if self.altura_pulo_atual < 0:  # inversao para o personagem cair
                     fl_caindo = -1
 
-                self.pos_y -= (self.altura_pulo_atual ** 2) / 2 * fl_caindo
+                self.pos_y -= (self.altura_pulo_atual ** 2) // 2 * fl_caindo
                 self.altura_pulo_atual -= 1
 
             else:
@@ -143,23 +143,44 @@ class Projectile:
 
 
 class Enemy:
-    inimigos_imgs_direita = [pygame.image.load('GameImages/R{}E.png'.format(i)) for i in range(1, 10)]
-    inimigos_imgs_esquerda = [pygame.image.load('GameImages/L{}E.png'.format(i)) for i in range(1, 10)]
+    inimigos_imgs_direita = [pygame.image.load('GameImages/R{}E.png'.format(i)) for i in range(1, 12)]
+    inimigos_imgs_esquerda = [pygame.image.load('GameImages/L{}E.png'.format(i)) for i in range(1, 12)]
 
-    def __init__(self, pos_x, pos_y, largura, altura, final):
+    def __init__(self, pos_x, pos_y, largura, altura, pos_final):
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.largura = largura
         self.altura = altura
-        self.final = final
+        self.pos_final = pos_final
+        self.caminho_percorrer = [pos_x, pos_final]
         self.velocidade = 3
         self.transicao_imagens = 0
 
     def desenhar_inimigo(self, tela):
-        pass
+        if self.transicao_imagens + 1 > 33:
+            self.transicao_imagens = 0
+
+        if self.velocidade > 0:
+            tela.blit(self.inimigos_imgs_direita[self.transicao_imagens // 3], (self.pos_x, self.pos_y))
+        else:
+            tela.blit(self.inimigos_imgs_esquerda[self.transicao_imagens // 3], (self.pos_x, self.pos_y))
+
+        self.transicao_imagens += 1
 
     def move(self):
-        pass
+        # andar para a direita - verificar se chegou no limite
+        if self.velocidade > 0:
+            if self.pos_x + self.velocidade < self.caminho_percorrer[1] - self.largura//2:
+                self.pos_x += self.velocidade
+            else:
+                self.velocidade *= -1
+                self.transicao_imagens = 0
+        else:
+            if self.pos_x - self.velocidade > self.caminho_percorrer[0]:
+                self.pos_x += self.velocidade
+            else:
+                self.velocidade *= -1
+                self.transicao_imagens = 0
 
 
 def redesenhar_tela():
@@ -168,6 +189,8 @@ def redesenhar_tela():
 
     player.desenhar_personagem(tela)
 
+    goblin.desenhar_inimigo(tela)
+
     for projetil in player.projeteis:
         projetil.desenhar_projetil(tela)
 
@@ -175,6 +198,7 @@ def redesenhar_tela():
 
 
 player = Player(300, 410, 64, 64)
+goblin = Enemy(100, 410, 64, 64, 450 )
 while not sair_jogo:
 
     for event in pygame.event.get():
@@ -186,6 +210,8 @@ while not sair_jogo:
     player.movimentar_personagem(key_pressed)
 
     player.atualizar_projetil()
+
+    goblin.move()
 
     redesenhar_tela()
 
