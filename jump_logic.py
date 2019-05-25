@@ -142,6 +142,26 @@ class Projectile:
         pygame.draw.circle(tela, self.cor, (self.pos_x, self.pos_y), self.raio)
 
 
+class Enemy:
+    inimigos_imgs_direita = [pygame.image.load('GameImages/R{}E.png'.format(i)) for i in range(1, 10)]
+    inimigos_imgs_esquerda = [pygame.image.load('GameImages/L{}E.png'.format(i)) for i in range(1, 10)]
+
+    def __init__(self, pos_x, pos_y, largura, altura, final):
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.largura = largura
+        self.altura = altura
+        self.final = final
+        self.velocidade = 3
+        self.transicao_imagens = 0
+
+    def desenhar_inimigo(self, tela):
+        pass
+
+    def move(self):
+        pass
+
+
 def redesenhar_tela():
     controle_FPS.tick(27)
     tela.blit(background, (0, 0))
