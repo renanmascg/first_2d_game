@@ -51,6 +51,7 @@ class Player:
         self.transicao_de_imagem = 0
         self.parado = True
         self.projeteis = []
+        self.hitbox = (self.pos_x + 17, self.pos_y + 11, 29, 52)
 
     def movimentar_personagem(self, key_pressed):
 
@@ -120,6 +121,8 @@ class Player:
                 tela.blit(imgs_andar_direita[0], (self.pos_x, self.pos_y))
             else:
                 tela.blit(imgs_andar_esquerda[0], (self.pos_x, self.pos_y))
+        self.hitbox = (self.pos_x + 17, self.pos_y + 11, 29, 52)
+        pygame.draw.rect(tela, VERMELHO, self.hitbox, 2)
 
     def atualizar_projetil(self):
         for proj in self.projeteis:
@@ -155,6 +158,7 @@ class Enemy:
         self.caminho_percorrer = [pos_x, pos_final]
         self.velocidade = 3
         self.transicao_imagens = 0
+        self.hitbox = (self.pos_x + 17, self.pos_y + 2, 31, 57)
 
     def desenhar_inimigo(self, tela):
         if self.transicao_imagens + 1 > 33:
@@ -167,10 +171,13 @@ class Enemy:
 
         self.transicao_imagens += 1
 
+        self.hitbox = (self.pos_x + 17, self.pos_y + 2, 31, 57)
+        pygame.draw.rect(tela, VERMELHO, self.hitbox, 2)
+
     def move(self):
         # andar para a direita - verificar se chegou no limite
         if self.velocidade > 0:
-            if self.pos_x + self.velocidade < self.caminho_percorrer[1] - self.largura//2:
+            if self.pos_x + self.velocidade < self.caminho_percorrer[1] - self.largura // 2:
                 self.pos_x += self.velocidade
             else:
                 self.velocidade *= -1
@@ -198,7 +205,7 @@ def redesenhar_tela():
 
 
 player = Player(300, 410, 64, 64)
-goblin = Enemy(100, 410, 64, 64, 450 )
+goblin = Enemy(100, 410, 64, 64, 450)
 while not sair_jogo:
 
     for event in pygame.event.get():
