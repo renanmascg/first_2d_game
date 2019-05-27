@@ -14,6 +14,8 @@ controle_FPS = pygame.time.Clock()
 LARGURA = 500
 ALTURA = 480
 
+VELOCIDADE_DE_ATAQUE = 5
+
 # define a altura maxima do pulo
 ALTURA_MAXIMA_PULO = 8
 
@@ -52,11 +54,21 @@ class Player:
         self.parado = True
         self.projeteis = []
         self.hitbox = (self.pos_x + 17, self.pos_y + 11, 29, 52)
+        self.vel_ataque = VELOCIDADE_DE_ATAQUE
 
     def movimentar_personagem(self, key_pressed):
 
-        if key_pressed[pygame.K_SPACE] and len(self.projeteis) < MAX_PROJETEIS:
+        print(self.vel_ataque)
+        if self.vel_ataque < VELOCIDADE_DE_ATAQUE:
+            self.vel_ataque -= 1
+
+        if self.vel_ataque == 0:
+            self.vel_ataque = VELOCIDADE_DE_ATAQUE
+
+        if key_pressed[pygame.K_SPACE] and len(self.projeteis) < MAX_PROJETEIS and \
+                self.vel_ataque == VELOCIDADE_DE_ATAQUE:
             self.adicionar_projetil()
+            self.vel_ataque -= 1
 
         if key_pressed[pygame.K_RIGHT]:
             self.pos_x += player.velocidade
