@@ -22,6 +22,9 @@ ALTURA_MAXIMA_PULO = 8
 # MÁXIMO DE PROJETEIS NA TELA
 MAX_PROJETEIS = 5
 
+# SCORE ACUMULADO ATÉ O MOMENTO
+score = 0
+
 # IMAGENS PRESENTES NA TELA
 imgs_andar_direita = [pygame.image.load('GameImages/R{}.png'.format(i)) for i in range(1, 10)]
 imgs_andar_esquerda = [pygame.image.load('GameImages/L{}.png'.format(i)) for i in range(1, 10)]
@@ -34,7 +37,7 @@ except:
     print("Algo inesperado ocorreu ao iniciar o pygame.")
 
 sair_jogo = False
-
+font = pygame.font.SysFont('comicsans', 30, True, True )
 tela = pygame.display.set_mode([LARGURA, ALTURA])
 pygame.display.set_caption("Jump Logic")
 
@@ -143,8 +146,10 @@ class Player:
                 proj.pos_x += proj.velocidade
 
     def atingiu_inimigo(self, inimigo):
+        global score
         for proj in self.projeteis:
             if proj.colidir_com(inimigo):
+                score += 1
                 inimigo.hit()
                 self.projeteis.remove(proj)
 
@@ -220,7 +225,8 @@ class Enemy:
 def redesenhar_tela():
     controle_FPS.tick(27)
     tela.blit(background, (0, 0))
-
+    text = font.render("Score: {} ".format(score), True, PRETO)
+    tela.blit(text, (390, 10))
     player.desenhar_personagem(tela)
 
     goblin.desenhar_inimigo(tela)
