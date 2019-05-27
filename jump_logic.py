@@ -56,9 +56,8 @@ class Player:
         self.hitbox = (self.pos_x + 17, self.pos_y + 11, 29, 52)
         self.vel_ataque = VELOCIDADE_DE_ATAQUE
 
-    def movimentar_personagem(self, key_pressed):
+    def acoes_personagem(self, key_pressed):
 
-        print(self.vel_ataque)
         if self.vel_ataque < VELOCIDADE_DE_ATAQUE:
             self.vel_ataque -= 1
 
@@ -143,6 +142,12 @@ class Player:
             else:
                 proj.pos_x += proj.velocidade
 
+    def atingiu_inimigo(self, inimigo):
+        for proj in self.projeteis:
+            if proj.colidir_com(inimigo):
+                inimigo.hit()
+                self.projeteis.remove(proj)
+
 
 class Projectile:
     def __init__(self, pos_x, pos_y, raio, cor, direcao):
@@ -155,6 +160,13 @@ class Projectile:
 
     def desenhar_projetil(self, tela):
         pygame.draw.circle(tela, self.cor, (self.pos_x, self.pos_y), self.raio)
+
+    def colidir_com(self, objeto):
+        if self.pos_x + self.raio > objeto.hitbox[0] and self.pos_x - self.raio < objeto.hitbox[0] + objeto.hitbox[2] \
+                and self.pos_y + self.raio > objeto.hitbox[1] and self.pos_y - self.raio < objeto.hitbox[1] + \
+                objeto.hitbox[3]:
+            return True
+        return False
 
 
 class Enemy:
@@ -201,6 +213,9 @@ class Enemy:
                 self.velocidade *= -1
                 self.transicao_imagens = 0
 
+    def hit(self):
+        print("hit")
+
 
 def redesenhar_tela():
     controle_FPS.tick(27)
@@ -226,9 +241,11 @@ while not sair_jogo:
 
     key_pressed = pygame.key.get_pressed()
 
-    player.movimentar_personagem(key_pressed)
+    player.acoes_personagem(key_pressed)
 
     player.atualizar_projetil()
+
+    player.atingiu_inimigo(goblin)
 
     goblin.move()
 
