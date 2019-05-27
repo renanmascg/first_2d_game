@@ -37,6 +37,14 @@ except:
     print("Algo inesperado ocorreu ao iniciar o pygame.")
 
 sair_jogo = False
+
+# MUSICA A SER TOCADA DE BACKGROUND
+music = pygame.mixer.music
+music.load('GameImages/music.mp3')
+music.play(-1)
+
+projetil_hit = pygame.mixer.Sound('GameImages/ball_hit.wav')
+
 font = pygame.font.SysFont('comicsans', 30, True, True )
 tela = pygame.display.set_mode([LARGURA, ALTURA])
 pygame.display.set_caption("Jump Logic")
@@ -147,9 +155,12 @@ class Player:
 
     def atingiu_inimigo(self, inimigo):
         global score
+        global projetil_hit
+
         for proj in self.projeteis:
             if proj.colidir_com(inimigo):
                 score += 1
+                projetil_hit.play()
                 inimigo.hit()
                 self.projeteis.remove(proj)
 

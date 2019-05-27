@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0a05c93-0469-4f53-be1b-defe8a1e13b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GameImages/ball_hit.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jump_logic.py" beforeDir="false" afterPath="$PROJECT_DIR$/jump_logic.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,20 +13,25 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/first_game_2d$jump_logic.coverage" NAME="jump_logic Coverage Results" MODIFIED="1558979441369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/first_game_2d$jump_logic.coverage" NAME="jump_logic Coverage Results" MODIFIED="1558984391081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="532331074">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="6" value="2" />
+          <entry key="easy_install" value="1" />
+          <entry key="pip" value="1" />
+          <entry key="pip3" value="1" />
           <entry key="py" value="2" />
           <entry key="txt" value="1" />
         </counts>
@@ -32,20 +39,20 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="2" />
+          <entry key="Python" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="5" />
-          <entry key="py" value="4506" />
+          <entry key="py" value="4784" />
           <entry key="txt" value="505" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="505" />
-          <entry key="Python" value="4511" />
+          <entry key="Python" value="4789" />
         </counts>
       </usages-collector>
     </session>
@@ -56,44 +63,16 @@
         <entry file="file://$PROJECT_DIR$/jump_logic.py">
           <provider selected="true" editor-type-id="live-pycharm">
             <state>
-              <first_editor relative-caret-position="333">
-                <caret line="152" column="29" lean-forward="true" selection-start-line="152" selection-start-column="29" selection-end-line="152" selection-end-column="29" />
+              <first_editor relative-caret-position="143">
+                <caret line="45" column="2" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
                 <folding>
-                  <element signature="e#1506#2628#0" />
-                  <element signature="e#2566#2834#0" />
-                  <element signature="e#2943#3713#0" />
-                  <element signature="e#3613#3822#0" />
-                  <element signature="e#4368#5037#0" />
-                  <element signature="e#5362#7144#0" />
-                  <marker date="1558979441358" expanded="true" signature="1038:7185" ph="..." />
-                  <marker date="1558979441358" expanded="true" signature="3055:3338" ph="..." />
-                  <marker date="1558979441358" expanded="true" signature="4683:7185" ph="..." />
-                  <marker date="1558979441358" expanded="true" signature="5414:7185" ph="..." />
-                  <marker date="1558979441358" expanded="true" signature="6139:6561" ph="..." />
+                  <marker date="1558984561975" expanded="true" signature="1217:7365" ph="..." />
+                  <marker date="1558984561975" expanded="true" signature="3234:3517" ph="..." />
+                  <marker date="1558984561975" expanded="true" signature="4863:7365" ph="..." />
+                  <marker date="1558984561975" expanded="true" signature="5594:7365" ph="..." />
                 </folding>
               </first_editor>
               <second_editor relative-caret-position="-126" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.2/python_stubs/1196111032/pygame/font.py">
-          <provider selected="true" editor-type-id="live-pycharm">
-            <state>
-              <first_editor relative-caret-position="99">
-                <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
-              </first_editor>
-              <second_editor relative-caret-position="-126" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -148,6 +127,11 @@
             </path>
             <path>
               <item name="first_game_2d" type="b2602c69:ProjectViewProjectNode" />
+              <item name="first_game_2d" type="462c0819:PsiDirectoryNode" />
+              <item name="GameImages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="first_game_2d" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
@@ -167,6 +151,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GameImages" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -255,7 +244,7 @@
     <frame x="0" y="23" width="1440" height="815" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14663805" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14878398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -292,6 +281,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="Inicializa a classe de inimigos dentro do jogo. Ainda não implementada totalmente." />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.2/python_stubs/1196111032/pygame/font.py">
+      <provider selected="true" editor-type-id="live-pycharm">
+        <state>
+          <first_editor relative-caret-position="1134">
+            <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -299,33 +298,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.2/python_stubs/1196111032/pygame/font.py">
-      <provider selected="true" editor-type-id="live-pycharm">
-        <state>
-          <first_editor relative-caret-position="99">
-            <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
-          </first_editor>
-          <second_editor relative-caret-position="-126" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/venv/bin/pip3.6">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/bin/pip3">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/bin/pip">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/bin/easy_install-3.6">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/bin/easy_install">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/jump_logic.py">
       <provider selected="true" editor-type-id="live-pycharm">
         <state>
-          <first_editor relative-caret-position="333">
-            <caret line="152" column="29" lean-forward="true" selection-start-line="152" selection-start-column="29" selection-end-line="152" selection-end-column="29" />
+          <first_editor relative-caret-position="143">
+            <caret line="45" column="2" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
             <folding>
-              <element signature="e#1506#2628#0" />
-              <element signature="e#2566#2834#0" />
-              <element signature="e#2943#3713#0" />
-              <element signature="e#3613#3822#0" />
-              <element signature="e#4368#5037#0" />
-              <element signature="e#5362#7144#0" />
-              <marker date="1558979441358" expanded="true" signature="1038:7185" ph="..." />
-              <marker date="1558979441358" expanded="true" signature="3055:3338" ph="..." />
-              <marker date="1558979441358" expanded="true" signature="4683:7185" ph="..." />
-              <marker date="1558979441358" expanded="true" signature="5414:7185" ph="..." />
-              <marker date="1558979441358" expanded="true" signature="6139:6561" ph="..." />
+              <marker date="1558984561975" expanded="true" signature="1217:7365" ph="..." />
+              <marker date="1558984561975" expanded="true" signature="3234:3517" ph="..." />
+              <marker date="1558984561975" expanded="true" signature="4863:7365" ph="..." />
+              <marker date="1558984561975" expanded="true" signature="5594:7365" ph="..." />
             </folding>
           </first_editor>
           <second_editor relative-caret-position="-126" />
